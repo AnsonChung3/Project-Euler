@@ -16,8 +16,8 @@
         </div>
         <div>
             <q-btn
-                label="test docker"
-                @click="test"
+                label="test text"
+                @click="testText"
             />
         </div>
     </div>
@@ -30,7 +30,7 @@ const TITLE = 'Hello! This is template page!';
 const INPUT = ref(undefined);
 const DISPLAY = ref('Display is empty');
 
-function test () {
+function testText () {
     DISPLAY.value = 'test';
 }
 
