@@ -10,10 +10,16 @@
             <p>This is what you typed in the v-modle input field above:</p>
             <p>{{ INPUT }}</p>
         </div>
-        <q-btn
-            label="test docker"
-            @click="test"
-        />
+        <div>
+            <h2>Display Box</h2>
+            <p>{{ DISPLAY }}</p>
+        </div>
+        <div>
+            <q-btn
+                label="test docker"
+                @click="test"
+            />
+        </div>
     </div>
 </template>
 
@@ -22,6 +28,11 @@ import { ref } from 'vue';
 
 const TITLE = 'Hello! This is template page!';
 const INPUT = ref(undefined);
+const DISPLAY = ref('Display is empty');
+
+function test () {
+    DISPLAY.value = 'test';
+}
 
 </script>
 
