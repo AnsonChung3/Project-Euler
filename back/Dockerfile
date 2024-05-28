@@ -1,5 +1,5 @@
 FROM python:3
-WORKDIR D/Coding/FrontBackCombinedProto/back
+WORKDIR D/Coding/New Project Euler/Project-Euler/back
 RUN pip install aiohttp
 RUN pip install aiohttp_cors
 COPY *.py .
