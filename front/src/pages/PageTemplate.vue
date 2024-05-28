@@ -1,16 +1,15 @@
 <template>
     <div>
-        <h5>Hello! This is template page!</h5>
+        <h1>{{ TITLE }}</h1>
+        <q-btn
+            label="test docker"
+            @click="test"
+        />
     </div>
 </template>
 
-<script>
-export default {
-    data() {
-        return {};
-    },
-    methods: {}
-};
+<script setup>
+const TITLE = 'Hello! This is template page!';
 </script>
 
 <style scoped>
