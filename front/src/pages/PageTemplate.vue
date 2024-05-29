@@ -45,8 +45,8 @@ function testText () {
 
 function dynamicGet () {
     const name = 'test';
-    api.get(`api/${name}`);
-    en(response => {
+    api.get(`api/${name}`)
+    .then(response => {
         DISPLAY.value = response.data;
     })
     .catch(error => {
