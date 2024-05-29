@@ -16,6 +16,10 @@
         </div>
         <div>
             <q-btn
+                label="test dynamic get"
+                @click="dynamicGet"
+            />
+            <q-btn
                 label="test Docker Get"
                 @click="testDockerGet"
             />
@@ -37,6 +41,17 @@ const DISPLAY = ref('Display is empty');
 
 function testText () {
     DISPLAY.value = 'test';
+}
+
+function dynamicGet () {
+    const name = 'test';
+    api.get(`api/${name}`);
+    en(response => {
+        DISPLAY.value = response.data;
+    })
+    .catch(error => {
+        DISPLAY.value = error;
+    })
 }
 
 function testDockerGet () {
