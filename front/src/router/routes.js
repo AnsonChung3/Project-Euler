@@ -14,6 +14,13 @@ const routes = [
             { path: "", component: () => import("pages/PageTemplate.vue") }
         ]
     },
+    {
+        path: "/test_page",
+        component: () => import("layouts/SolarizedDarkLayout.vue"),
+        children: [
+            { path: "", component: () => import("pages/TestPage.vue") }
+        ]
+    },
 
     // Always leave this as last one,
     // but you can also remove it
