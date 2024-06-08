@@ -39,6 +39,7 @@ const selected = ref(0);
 const answerText = ref(0)
 
 function getQText (i) {
+    answerText.value = 0;
     selected.value = i;
     const question = questionTexts.find(question => question.num === i);
     displayText.value = question.text;
