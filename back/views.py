@@ -79,3 +79,10 @@ async def PE_question_6(request):
         sum_of_squares += (i * i)
 
     return web.Response(text=str(sum_of_number * sum_of_number - sum_of_squares))
+
+async def PE_question_7 (request):
+    counter = 0
+    for prime in helpers.gen_primes():
+        counter += 1
+        if (counter == 10001):
+            return web.Response(text=str(prime))

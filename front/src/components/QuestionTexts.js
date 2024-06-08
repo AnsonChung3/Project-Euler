@@ -47,5 +47,12 @@ export const questionTexts = [
             "Hence the difference between them is ",
             "3025 − 385 = 2640"
         ]
+    },
+    {
+        num: 7,
+        text: [
+            "By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.",
+            "What is the 10 001st prime number?"
+        ]
     }
 ]
