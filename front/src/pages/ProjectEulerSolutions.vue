@@ -6,19 +6,42 @@
         <div v-for="i in solved" :key="i" class="display-question-number">
             <q-btn
                 :label=i
+                @click="getQText(i)"
                 outline
                 class="question-button"
             />
         </div>
-        <div class="question-text-display">{{ questionText }}</div>
+        <div class="question-text-display">
+            <div v-for="(text, index) in displayText" :key="index">
+                <p>{{ text }}</p>
+            </div>
+            <q-btn
+                v-if="selected !== 0"
+                label='show answer'
+                @click="fetchAnswer"
+                outline
+            />
+        </div>
     </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import { questionTexts } from 'src/components/QuestionTexts.js';
 
-const solved = [1, 9, 20]
-const questionText = ref('Please select a question number.')
+const solved = [1, 9, 20];
+const displayText = ref(['Please select a question number.']);
+const selected = ref(0);
+
+function getQText (i) {
+    selected.value = i;
+    const question = questionTexts.find(question => question.num === i);
+    displayText.value = question.text;
+}
+
+function fetchAnswer () {
+    console.log('boop');
+}
 </script>
 
 <style scoped>
