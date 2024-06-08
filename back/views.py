@@ -104,3 +104,11 @@ async def PE_question_8 (request):
         val = 1
     
     return web.Response(text=str(answer))
+
+async def PE_question_10 (request):
+    answer = 0
+    for prime in helpers.gen_primes():
+        if (prime >= 2000000):
+            break
+        answer += prime
+    return web.Response(text=str(answer))
