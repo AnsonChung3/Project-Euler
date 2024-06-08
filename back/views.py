@@ -69,3 +69,13 @@ async def PE_question_5(request):
             break
 
     return web.Response(text=str(answer))
+
+async def PE_question_6(request):
+    sum_of_number = 0
+    sum_of_squares = 0
+
+    for i in range (1, 101):
+        sum_of_number += i
+        sum_of_squares += (i * i)
+
+    return web.Response(text=str(sum_of_number * sum_of_number - sum_of_squares))
