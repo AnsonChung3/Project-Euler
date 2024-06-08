@@ -21,17 +21,25 @@
                 @click="fetchAnswer"
                 outline
             />
+            <p
+                v-if="answerText !== 0"
+                class="answer"
+            >
+                Answer is {{ answerText }}
+            </p>
         </div>
     </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import { api } from 'src/boot/axios.js';
 import { questionTexts } from 'src/components/QuestionTexts.js';
 
 const solved = [1, 9, 20];
 const displayText = ref(['Please select a question number.']);
 const selected = ref(0);
+const answerText = ref(0)
 
 function getQText (i) {
     selected.value = i;
@@ -40,7 +48,10 @@ function getQText (i) {
 }
 
 function fetchAnswer () {
-    console.log('boop');
+    api.get(`api/PE_question_${selected.value}`)
+    .then(response => {
+        answerText.value = response.data;
+    })
 }
 </script>
 
@@ -56,6 +67,9 @@ function fetchAnswer () {
     border: 2px solid #93a1a1;
     min-height: 50px;
     margin-top: 1%;
-    padding: 1%
+    padding: 3%
+}
+.answer {
+    margin-top: 2%
 }
 </style>
