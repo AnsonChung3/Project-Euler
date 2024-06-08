@@ -20,3 +20,15 @@ async def PE_question_1(request):
         if n % 3 == 0 or n % 5 == 0:
             result += n
     return web.Response(text=str(result))
+
+async def PE_question_2(request):
+    def fib_generator(LIMIT):
+        a, b = 1, 2
+        while a < LIMIT:
+            yield a
+            a, b = b, a + b
+    sum = 0
+    for fib in fib_generator(4000000):
+        if fib % 2 == 0:
+            sum += fib
+    return web.Response(text=str(sum))
