@@ -33,7 +33,7 @@ import { ref } from 'vue';
 import { api } from 'src/boot/axios.js';
 import { questionTexts } from 'src/components/QuestionTexts.js';
 
-const solved = [1, 2];
+const solved = [1, 2, 3];
 const displayText = ref(['Please select a question number.']);
 const selected = ref(0);
 const answerText = ref(0)

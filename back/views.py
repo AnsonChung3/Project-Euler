@@ -2,6 +2,7 @@
 # these are only backend urls you'd want
 from aiohttp import web
 import helpers
+import math
 
 # these fucntions are handling requests
 # and if you look into routes.py, they are assigned a endpoint
@@ -32,3 +33,16 @@ async def PE_question_2(request):
         if fib % 2 == 0:
             sum += fib
     return web.Response(text=str(sum))
+
+async def PE_question_3(request):
+    val = 600851475143
+    limit = math.isqrt(val)
+    answer = 0
+
+    for prime in helpers.gen_primes():
+        if (prime < limit) and (val % prime) == 0:
+            answer = prime
+        if prime > limit:
+            break
+    
+    return web.Response(text=str(answer))
