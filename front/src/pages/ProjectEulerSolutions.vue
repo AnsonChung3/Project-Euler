@@ -21,10 +21,7 @@
                 @click="fetchAnswer"
                 outline
             />
-            <p
-                v-if="answerText !== 0"
-                class="answer"
-            >
+            <p v-if="answerText !== 0" class="answer">
                 Answer is {{ answerText }}
             </p>
         </div>
