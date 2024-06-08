@@ -46,3 +46,26 @@ async def PE_question_3(request):
             break
     
     return web.Response(text=str(answer))
+
+async def PE_question_4(request):
+    val = 0
+
+    for i in range(999, 99, -1):
+        for j in range(i-1, 99, -1):
+            product = i * j
+            if str(product) == str(product)[::-1]:
+                if (product > val):
+                    val = product
+
+    return web.Response(text=str(val))
+
+async def PE_question_5(request):
+    answer = 0
+    counter = 0
+    for n in helpers.find_lcm():
+        counter += 1
+        if (counter == 20):
+            answer = n
+            break
+
+    return web.Response(text=str(answer))
