@@ -86,3 +86,21 @@ async def PE_question_7 (request):
         counter += 1
         if (counter == 10001):
             return web.Response(text=str(prime))
+
+async def PE_question_8 (request):
+    index = 0
+    val= 1
+    answer = 0
+    while index < 986:
+        # slicing [a:a+13] because a+13 itself is excluded
+        selection = helpers.Q8_problem[index:index+13]
+        for i in range(13):
+            # numbers can't be sliced
+            # therefore it needs to be transfored back to int to do maths
+            val = val * int(selection[i])
+        if (val > answer):
+            answer = val
+        index += 1
+        val = 1
+    
+    return web.Response(text=str(answer))
