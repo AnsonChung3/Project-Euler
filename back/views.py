@@ -112,3 +112,33 @@ async def PE_question_10 (request):
             break
         answer += prime
     return web.Response(text=str(answer))
+
+async def PE_question_11(request):
+    problem = helpers.Q11_problem
+    answer = 0
+
+    for row in range(len(problem)):
+        for col in range(len(problem)-3):
+            horizontal = (problem[row][col] * problem[row][col+1] * problem[row][col+2] * problem[row][col+3])
+            if (horizontal > answer):
+                answer = horizontal
+                
+    for row in range(len(problem)-3):
+        for col in range(len(problem)):
+            vertical = (problem[row][col] * problem[row+1][col] * problem[row+2][col] * problem[row+3][col])
+            if (vertical > answer):
+                answer = vertical
+
+    for row in range(len(problem)-3):
+        for col in range(len(problem)-3):
+            top_left = (problem[row][col] * problem[row+1][col+1] * problem[row+2][col+2] * problem[row+3][col+3])
+            if (top_left > answer):
+                answer = top_left
+                
+    for row in range(len(problem)-3):
+        for col in range(3, len(problem)):
+            top_right = (problem[row][col] * problem[row+1][col-1] * problem[row+2][col-2] * problem[row+3][col-3])
+            if (top_right > answer):
+                answer = top_right
+    
+    return web.Response(text=str(answer))
