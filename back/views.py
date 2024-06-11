@@ -188,3 +188,71 @@ async def PE_question_14(request):
             answer, chain = i, len(list(collatz_chain_count(i)))
     
     return web.Response(text=str(answer))
+
+async def PE_question_15(request):
+    # generate empty 21 x 21 grid view
+    # grid_view[0][0] will be the top left corner, and [19][19] be the bottom right corner
+    grid_view = []
+    for row in range(21):
+        grid_view.append([*range(21)])
+
+    for index in range(21):
+        # assigning value = 1 to the top row
+        grid_view[0][index] = 1
+        # assigning value = 1 to the left column
+        grid_view[index][0] = 1
+    
+    for row in range (1, 21):
+        for i in range(1, 21):
+            # value to each point/node is the sum of the one above and the one to the right
+            # https://youtu.be/UplqE9mm490?si=rVliLbK4860C_QHg&t=232
+            # this is the illustration of this method
+            grid_view[row][i] = grid_view[row-1][i] + grid_view[row][i-1]
+    
+    return web.Response(text=str(grid_view[20][20]))
+
+async def PE_question_16(request):
+    num = str(2**1000)
+    answer = 0
+
+    for i in num:
+        answer += int(i)
+
+    return web.Response(text=str(answer))
+
+async def PE_question_17(request):
+    len_of_digit = { 1: 3, 2: 3, 3: 5, 4: 4, 5: 4, 6: 3, 7: 5, 8: 5, 9: 4, 0: 0}
+    len_of_tenth = { 1: 3, 2: 6, 3: 6, 4: 5, 5: 5, 6: 5, 7: 7, 8: 6, 9: 6, 0: 0}
+    teen_exceptions = [4, 6, 7, 9]
+    hundreds = [100, 200, 300, 400, 500, 600, 700, 800, 900]
+
+    # answer starts at 11 for "one thousand"
+    answer = 11
+
+    for num in range(1, 1000):
+        str_num = list(str(num)[::-1])
+        if num < 100:
+            str_num.append('0')
+            # take off the extra addition of "hundred and"
+            # see more details in the hundreds' block
+            answer -= 10
+        if num < 10:
+            str_num.append('0')
+
+        # adding digiits
+        answer += len_of_digit[int(str_num[0])]
+
+        # adding tenths
+        if int(str_num[1]) == 1 and int(str_num[0]) in teen_exceptions:
+            answer += 1
+        answer += len_of_tenth[int(str_num[1])]
+
+        # adding hundreds
+        # the +10 is for "hundred and"
+        # extra addition for < 100 is alraedy taken in the previous logic block
+        answer += len_of_digit[int(str_num[2])] + 10
+        if num in hundreds:
+            # -3 for the "and"
+            answer -= 3
+
+    return web.Response(text=str(answer))
