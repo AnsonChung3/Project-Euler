@@ -142,3 +142,22 @@ async def PE_question_11(request):
                 answer = top_right
     
     return web.Response(text=str(answer))
+
+async def PE_question_12(request):
+    def triangle_gen():
+        add_on = 11
+        sum = 55
+        while True:
+            sum += add_on
+            yield sum
+            add_on += 1
+    
+    divisor_count = 0
+
+    for i in triangle_gen():
+        for k in range(2, math.isqrt(i)+1):
+            if (i % k == 0):
+                divisor_count += 1
+            if (divisor_count >= 249):
+                return web.Response(text=str(i))
+        divisor_count = 0  

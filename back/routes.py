@@ -14,3 +14,4 @@ def setup_routes(app):
     app.router.add_route("GET", "/PE_question_8", views.PE_question_8)
     app.router.add_route("GET", "/PE_question_10", views.PE_question_10)
     app.router.add_route("GET", "/PE_question_11", views.PE_question_11)
+    app.router.add_route("GET", "/PE_question_12", views.PE_question_12)
