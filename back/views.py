@@ -172,7 +172,6 @@ async def PE_question_13(request):
 async def PE_question_14(request):
     def collatz_chain_count(START):
         n = START
-        chain = 0
         
         while n != 1:
             if n % 2 == 0:
@@ -181,7 +180,6 @@ async def PE_question_14(request):
                 new = n * 3 + 1
             yield new
             n = new
-            chain += 1
 
     answer, chain = 0, 0
 
