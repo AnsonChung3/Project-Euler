@@ -40,7 +40,7 @@ async def PE_question_3(request):
     answer = 0
 
     for prime in helpers.gen_primes():
-        if (prime < limit) and (val % prime) == 0:
+        if prime < limit and (val % prime) == 0:
             answer = prime
         if prime > limit:
             break
@@ -54,7 +54,7 @@ async def PE_question_4(request):
         for j in range(i-1, 99, -1):
             product = i * j
             if str(product) == str(product)[::-1]:
-                if (product > val):
+                if product > val:
                     val = product
 
     return web.Response(text=str(val))
@@ -64,7 +64,7 @@ async def PE_question_5(request):
     counter = 0
     for n in helpers.find_lcm():
         counter += 1
-        if (counter == 20):
+        if counter == 20:
             answer = n
             break
 
@@ -74,20 +74,20 @@ async def PE_question_6(request):
     sum_of_number = 0
     sum_of_squares = 0
 
-    for i in range (1, 101):
+    for i in range(1, 101):
         sum_of_number += i
         sum_of_squares += (i * i)
 
     return web.Response(text=str(sum_of_number * sum_of_number - sum_of_squares))
 
-async def PE_question_7 (request):
+async def PE_question_7(request):
     counter = 0
     for prime in helpers.gen_primes():
         counter += 1
-        if (counter == 10001):
+        if counter == 10001:
             return web.Response(text=str(prime))
 
-async def PE_question_8 (request):
+async def PE_question_8(request):
     index = 0
     val= 1
     answer = 0
@@ -98,17 +98,17 @@ async def PE_question_8 (request):
             # numbers can't be sliced
             # therefore it needs to be transfored back to int to do maths
             val = val * int(selection[i])
-        if (val > answer):
+        if val > answer:
             answer = val
         index += 1
         val = 1
     
     return web.Response(text=str(answer))
 
-async def PE_question_10 (request):
+async def PE_question_10(request):
     answer = 0
     for prime in helpers.gen_primes():
-        if (prime >= 2000000):
+        if prime >= 2000000:
             break
         answer += prime
     return web.Response(text=str(answer))
@@ -120,25 +120,25 @@ async def PE_question_11(request):
     for row in range(len(problem)):
         for col in range(len(problem)-3):
             horizontal = (problem[row][col] * problem[row][col+1] * problem[row][col+2] * problem[row][col+3])
-            if (horizontal > answer):
+            if horizontal > answer:
                 answer = horizontal
                 
     for row in range(len(problem)-3):
         for col in range(len(problem)):
             vertical = (problem[row][col] * problem[row+1][col] * problem[row+2][col] * problem[row+3][col])
-            if (vertical > answer):
+            if vertical > answer:
                 answer = vertical
 
     for row in range(len(problem)-3):
         for col in range(len(problem)-3):
             top_left = (problem[row][col] * problem[row+1][col+1] * problem[row+2][col+2] * problem[row+3][col+3])
-            if (top_left > answer):
+            if top_left > answer:
                 answer = top_left
                 
     for row in range(len(problem)-3):
         for col in range(3, len(problem)):
             top_right = (problem[row][col] * problem[row+1][col-1] * problem[row+2][col-2] * problem[row+3][col-3])
-            if (top_right > answer):
+            if top_right > answer:
                 answer = top_right
     
     return web.Response(text=str(answer))
