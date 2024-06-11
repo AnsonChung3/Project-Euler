@@ -63,8 +63,7 @@ function fetchAnswer () {
     display: inline
 }
 .question-button {
-    margin-right: 1%
-    /* display: inline */
+    margin: 0% 1% 1% 0%
 }
 .question-text-display {
     border: 2px solid #93a1a1;
