@@ -17,8 +17,9 @@
             </div>
             <q-btn
                 v-if="selected !== 0"
-                label='show answer'
+                :label='fetchButtontext'
                 @click="fetchAnswer"
+                :disable='disableFetch'
                 outline
             />
             <p v-if="answerText !== 0" class="answer">
@@ -29,12 +30,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { api } from 'src/boot/axios.js';
 import { questionTexts } from 'src/components/QuestionTexts.js';
 
 const solved = questionTexts.map(questions => questions.num);
 const displayText = ref(['Please select a question number.']);
+const disableFetch = ref(false);
+const fetchButtontext = computed(() => { return disableFetch.value ? 'Fetching answer...' : 'Show Answer' });
 const selected = ref(0);
 const answerText = ref(0)
 
@@ -46,9 +49,11 @@ function getQText (i) {
 }
 
 function fetchAnswer () {
+    disableFetch.value = !disableFetch.value;
     api.get(`api/PE_question_${selected.value}`)
     .then(response => {
         answerText.value = response.data;
+        disableFetch.value = !disableFetch.value;
     })
 }
 </script>
