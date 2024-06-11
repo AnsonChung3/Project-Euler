@@ -161,3 +161,32 @@ async def PE_question_12(request):
             if (divisor_count >= 249):
                 return web.Response(text=str(i))
         divisor_count = 0  
+
+async def PE_question_13(request):
+    sum = 0
+    for n in helpers.Q13_problem:
+        sum += n
+
+    return web.Response(text=str(sum)[0:10])
+
+async def PE_question_14(request):
+    def collatz_chain_count(START):
+        n = START
+        chain = 0
+        
+        while n != 1:
+            if n % 2 == 0:
+                new = n / 2
+            else:
+                new = n * 3 + 1
+            yield new
+            n = new
+            chain += 1
+
+    answer, chain = 0, 0
+
+    for i in range (1, 1000000):
+        if len(list(collatz_chain_count(i))) > chain:
+            answer, chain = i, len(list(collatz_chain_count(i)))
+    
+    return web.Response(text=str(answer))
