@@ -256,3 +256,36 @@ async def PE_question_17(request):
             answer -= 3
 
     return web.Response(text=str(answer))
+
+async def PE_question_18(request):
+    answer = helpers.max_sum_triangle(helpers.Q18_problem)
+    return web.Response(text=str(answer))
+
+async def PE_question_67(request):
+    answer = helpers.max_sum_triangle(helpers.Q67_problem)
+    return web.Response(text=str(answer))
+
+async def PE_question_20(request):
+    product = 1
+    for i in range(2, 101):
+        product = i * product
+    
+    answer = 0
+    for num in str(product):
+        answer += int(num)
+    
+    return web.Response(text=str(answer))
+
+async def PE_question_22(request):
+    answer = 0
+    
+    sorted_names = sorted(helpers.Q22_problem)
+    for i in range(len(sorted_names)):
+        name = sorted_names[i]
+        name_value = 0
+        for alphabet in name:
+            # the value for "A" is 65, so the value here is -64
+            name_value += ord(alphabet)-64
+        answer += name_value * (i + 1)
+
+    return web.Response(text=str(answer))
