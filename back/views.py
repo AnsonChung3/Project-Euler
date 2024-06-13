@@ -3,6 +3,7 @@
 from aiohttp import web
 import helpers
 import math
+import itertools
 
 # these fucntions are handling requests
 # and if you look into routes.py, they are assigned a endpoint
@@ -289,3 +290,39 @@ async def PE_question_22(request):
         answer += name_value * (i + 1)
 
     return web.Response(text=str(answer))
+
+async def PE_question_28(request):
+    answer = 1
+    for i in range(3, 1002, +2):
+        # top right corner
+        top_right = i ** 2
+        answer += top_right
+        # top lef corner
+        answer += top_right - (i - 1)
+        # bottom left corner
+        answer += top_right - (i - 1) * 2
+        # bottom right corner
+        answer += top_right - (i - 1) * 3
+
+    return web.Response(text=str(answer))
+
+async def PE_question_36(request):
+    answer = 0
+    bin = "{0:b}"
+    for i in range(1, 1000000):
+        ten_str = str(i)
+        if ten_str == ten_str[::-1]:
+            bin_str = bin.format(i)
+            if bin_str == bin_str[::-1]:
+                answer += i
+    print(answer)
+    return web.Response(text=str(answer))
+
+async def PE_question_41(request):
+    digits = [str(i) for i in range(9, 0, -1)]
+
+    for i in range(0, 6):
+        for num in itertools.permutations(digits[i:]):
+            answer = "".join(num)
+            if (helpers.isPrime(int(answer))):
+                return web.Response(text=answer)

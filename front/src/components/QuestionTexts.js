@@ -336,6 +336,37 @@ export const questionTexts = [
         ]
     },
     {
+        num: 28,
+        text: [
+            "Problem 28",
+            "Starting with the number 1 and moving to the right in a clockwise direction a 5 by 5 spiral is formed as follows:",
+            "21  22  23  24  25",
+            "20  07  08  09  10",
+            "19  06  01  02  11",
+            "18  05  04  03  12",
+            "17  16  15  14  13",
+            "It can be verified that the sum of the numbers on the diagonals is 101.",
+            "What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the same way?"
+        ]
+    },
+    {
+        num: 36,
+        text: [
+            "Problem 36",
+            "The decimal number, 585 = 10010010012 (binary), is palindromic in both bases.",
+            "Find the sum of all numbers, less than one million, which are palindromic in base 10 and base 2.",
+            "(Please note that the palindromic number, in either base, may not include leading zeros.)"
+        ]
+    },
+    {
+        num: 41,
+        text: [
+            "Problem 41",
+            "We shall say that an n-digit number is pandigital if it makes use of all the digits 1 to n exactly once. For example, 2143 is a 4-digit pandigital and is also prime.",
+            "What is the largest n-digit pandigital prime that exists? "
+        ]
+    },
+    {
         num: 67,
         text: [
             "Problem 67",
