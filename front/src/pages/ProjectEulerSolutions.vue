@@ -12,6 +12,7 @@
             />
         </div>
         <div class="question-text-display">
+            <p v-if="selected !== 0"> Question {{selected}}</p>
             <div v-for="(text, index) in displayText" :key="index">
                 <p>{{ text }}</p>
             </div>
