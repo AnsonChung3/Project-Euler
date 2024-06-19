@@ -326,3 +326,28 @@ async def PE_question_41(request):
             answer = "".join(num)
             if (helpers.isPrime(int(answer))):
                 return web.Response(text=answer)
+
+async def PE_question_81(request):
+    # this solution starts from the top left corner(0, 0), then moves in layers towards the bottom right corner
+    Q81 = helpers.Q81_problem
+    # variable set up for readability
+    MAX = len(Q81)
+
+    # range for row is set so the function will never loop through the point (0, 0),
+    # which the function should skip
+    # this eliminates the boolean check for (0, 0) which is only useful for a single time
+    for row in range(1, MAX):
+        # the range setting avoids the diagonal points
+        for col in range(row):
+            if col == 0:
+                # this is for all numbers on the left edge
+                Q81[row][col] += Q81[row-1][col]
+                # this is for all numbers on the top edge
+                Q81[col][row] += Q81[col][row-1]
+            else:
+                Q81[row][col] += min(Q81[row-1][col], Q81[row][col-1])
+                Q81[col][row] += min(Q81[col-1][row], Q81[col][row-1])
+        # bottom right corner is handled after both right and bottom edged are done looping
+        Q81[row][row] += min(Q81[row-1][row], Q81[row][row-1]) 
+
+    return web.Response(text=str(Q81[MAX-1][MAX-1]))

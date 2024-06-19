@@ -379,5 +379,19 @@ export const questionTexts = [
             "Find the maximum total from top to bottom in triangle.txt (right click and 'Save Link/Target As...'), a 15K text file containing a triangle with one-hundred rows.",
             "NOTE: This is a much more difficult version of Problem 18. It is not possible to try every route to solve this problem, as there are 299 altogether! If you could check one trillion (1012) routes every second it would take over twenty billion years to check them all. There is an efficient algorithm to solve it. ;o)"
         ]
+    },
+    {
+        num: 81,
+        text: [
+            "Difficulty rating 10%",
+            "In the 5 by 5 matrix below, the minimal path sum from the top left to the bottom right, by only moving to the right and down, is indicated in bold red and is equal to 2427.",
+            "[131], 673, 234, 103, 18",
+            "[201], [96], [342], 965, 150",
+            "630, 803, [746], [422], 111",
+            "537, 699, 497, [121], 956",
+            "805, 732, 524, [37], [331]",
+            "Find the minimal path sum from the top left to the bottom right by only moving right and down in matrix.txt (right click and 'Save Link/Target As...'), a 31K text file containing an 80 by 80 matrix."
+
+        ]
     }
 ]
