@@ -351,3 +351,45 @@ async def PE_question_81(request):
         Q81[row][row] += min(Q81[row-1][row], Q81[row][row-1]) 
 
     return web.Response(text=str(Q81[MAX-1][MAX-1]))
+
+# async def PE_question_357(request):    
+#     answer = 0
+
+#     # the solution starts by making a full list of primes under 10^8
+#     # it is for both quick check up and first filter for numbers
+#     list_of_primes = list(helpers.gen_primes_with_limit(10**8))
+    
+#     # since n+1 has to be prime, all n must be prime-1
+#     list_of_answers = [prime - 1 for prime in list_of_primes]
+#     # remove the first prime(2)
+#     del list_of_answers[0]
+#     # multiples of 4 means 2 x 2 x something, which makes the combo an even number
+#     # hence it's filtered out
+#     # this brings the numbers being tested to <3% of 10^8
+#     list_filtered_out_divisible_by_4 = [n for n in list_of_answers if not n % 4 == 0]
+
+#     def test_w_prime(n, primes):
+#         test_limit = int(n ** 0.5)
+        
+#         for i in range(2, test_limit+1): 
+#             if n % i == 0 and not (i + n/i) in primes:
+#                 return False
+#         # print(f"{n} is adding")
+#         answer += n
+    
+#     for n in list_filtered_out_divisible_by_4:
+#         test_w_prime(n)
+    
+#     # due to a mix of performance issue from docker, python, and my own computer
+#     # there is no way for my machine to run this code in a reasonable time
+#     # posisbly docker can only use so much resources
+#     # posisbly pyhton is single thread or something to do with garabage collection
+#     # possibly my laptop is too old(8+years) to run it
+
+#     # I tried to break up the massive lists into smaller ones to see if that helps
+#     # it's proved, with a smaller max value 10^6, it runs 1/3 quicker
+#     # but unfortunately when it comes to 10^8 it doesn't finish within 48 hours
+
+#     # since the code should work but can't be run, this solution is commented out
+
+#     return web.Response(text=str(answer))
