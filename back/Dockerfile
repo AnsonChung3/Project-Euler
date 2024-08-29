@@ -12,4 +12,4 @@ COPY *.py .
 # this is set up with frontend running on 8080 in mind
 EXPOSE 8080
 
-CMD [ "python", "./app.py" ]
+CMD [ "python", "-u", "./app.py" ]
