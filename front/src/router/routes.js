@@ -2,16 +2,9 @@
 const routes = [
     {
         path: "/",
-        component: () => import("layouts/MainLayout.vue"),
-        children: [
-            { path: "", component: () => import("pages/Index.vue") }
-        ]
-    },
-    {
-        path: "/template",
         component: () => import("layouts/SolarizedDarkLayout.vue"),
         children: [
-            { path: "", component: () => import("pages/PageTemplate.vue") }
+            { path: "", component: () => import("pages/ProjectEulerSolutions.vue") }
         ]
     },
     {
@@ -19,13 +12,6 @@ const routes = [
         component: () => import("layouts/SolarizedDarkLayout.vue"),
         children: [
             { path: "", component: () => import("pages/TestPage.vue") }
-        ]
-    },
-    {
-        path: "/Project_Euler_solutions",
-        component: () => import("layouts/SolarizedDarkLayout.vue"),
-        children: [
-            { path: "", component: () => import("pages/ProjectEulerSolutions.vue") }
         ]
     },
 
