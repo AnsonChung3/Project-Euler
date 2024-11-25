@@ -1,6 +1,15 @@
-# template (template)
+# Project Euler Solutions
 
-## Backend (copied)
+This is a collection of solutions for math problems using Python. It has both frontend and backend. Answer would come up with a click of a button on frontend.
+
+## Frontend
+Simply run the two commands below, and the frontend will be ready :)
+```
+npm insatall
+quasar dev
+```
+
+## Backend
 With Docker, presuming the frontend is running on 8080, run
 ```
 docker build -t anson_euler .
@@ -12,12 +21,3 @@ When done, easy stop and clean up, run
 ```
 docker kill anson_euler_container && docker rm anson_euler_container
 ```
-
-## End notes
-This is the template for new porjects with JS fronted and Python backend
-
-Frontend: vue 3.0, quasar 2.0, npm 8.5.5, nodejs 16.14.2; 
-Backend: python 3, docker only
-
-ver 1.0
-fixed eslint rules: 4 space indent; no space before function parenthesis; semi colon at the end; double quotes for strings
